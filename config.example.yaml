@@ -1,0 +1,144 @@
+# MCP Go Framework Configuration File
+# Priority: Environment Variables > CLI Flags > Config File > Defaults
+
+# ===============================================================================
+# Core Settings
+# ===============================================================================
+
+# Transport mode: "stdio", "http", or "multi" (runs both stdio and HTTP)
+transport: http
+
+# HTTP listen address (required for http/multi transport)
+addr: ":8080"
+
+# Enable authentication (recommended for production)
+auth_enabled: false
+
+# Authentication tokens (token:userID mapping)
+auth_tokens:
+  "token1": "alice"
+  "token2": "bob"
+
+# Log level: debug, info, warn, error
+log_level: info
+
+# Max request body size in bytes (default: 10MB)
+max_body_size: 10485760
+
+# MCP server metadata
+server_name: mcp-go-server
+server_version: "0.1.0"
+
+# ===============================================================================
+# Timeout Settings
+# ===============================================================================
+
+# Request timeout (applies to all HTTP requests)
+request_timeout: 30s
+
+# Tool execution timeout
+tool_timeout: 60s
+
+# Graceful shutdown timeout
+shutdown_timeout: 30s
+
+# ===============================================================================
+# Rate Limiting
+# ===============================================================================
+
+# Enable rate limiting
+rate_limit_enabled: false
+
+# Requests per second (global)
+requests_per_second: 100
+
+# Burst size (allows temporary spikes)
+burst_size: 200
+
+# Per-user request limit (requires auth)
+per_user_limit: 50
+
+# Per-tool request limit
+per_tool_limit: 30
+
+# ===============================================================================
+# CORS (Cross-Origin Resource Sharing)
+# ===============================================================================
+
+# Enable CORS support
+cors_enabled: false
+
+# Allowed origins (use ["*"] for any origin)
+cors_origins:
+  - "http://localhost:3000"
+  - "https://example.com"
+
+# Allowed HTTP methods
+cors_methods:
+  - "GET"
+  - "POST"
+  - "PUT"
+  - "DELETE"
+  - "OPTIONS"
+
+# Allowed headers
+cors_headers:
+  - "Origin"
+  - "Content-Type"
+  - "Authorization"
+
+# Allow credentials (cookies, authorization headers)
+cors_credentials: false
+
+# ===============================================================================
+# Observability
+# ===============================================================================
+
+# OpenTelemetry tracing configuration
+tracing_enabled: false
+tracing_endpoint: "localhost:4318"
+tracing_insecure: true
+
+# Prometheus metrics
+metrics_enabled: false
+
+# Audit logging (security events)
+audit_log_enabled: false
+
+# Pprof debugging endpoints (/debug/pprof/*)
+pprof_enabled: false
+
+# ===============================================================================
+# Error Tracking
+# ===============================================================================
+
+# Error tracking integration (e.g., Sentry)
+error_tracking_enabled: false
+error_tracking_dsn: ""
+
+# ===============================================================================
+# Connection Pool
+# ===============================================================================
+
+# Maximum idle connections
+max_idle_conns: 100
+
+# Maximum idle connections per host
+max_idle_conns_per_host: 10
+
+# Idle connection timeout
+idle_conn_timeout: 90s
+
+# ===============================================================================
+# Advanced Features
+# ===============================================================================
+
+# Configuration hot reload (watches config file for changes)
+config_hot_reload: false
+config_watch_path: ""
+
+# Plugin directory for dynamic tool loading
+plugin_dir: ""
+
+# Encrypted configuration file path
+secure_config_path: ""

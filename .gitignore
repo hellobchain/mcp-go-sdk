@@ -1,0 +1,10 @@
+build/
+coverage.out
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+.env
+vendor/
